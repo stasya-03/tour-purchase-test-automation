@@ -1,7 +1,10 @@
 package ru.netology.web.test;
 
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.web.data.DataHelper;
@@ -10,18 +13,23 @@ import ru.netology.web.page.DashboardPage;
 
 public class BuyingATripTest {
 
+
     DashboardPage dashboardPage;
-    DataHelper.CardInfo firstCardInfo;
-    DataHelper.CardInfo secondCardInfo;
+
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
 
     @AfterAll
     static void tearDownAll() {
         SQLHelper.cleanDatabase();
+        SelenideLogger.removeListener("allure");
     }
 
     @BeforeEach
     void setup() {
-        var loginPage = Selenide.open("http://localhost:8080", DashboardPage.class);
+        dashboardPage = Selenide.open("http://localhost:8080", DashboardPage.class);
     }
 
     @Test
@@ -30,7 +38,7 @@ public class BuyingATripTest {
         var paymentPage = dashboardPage.buyWithCard();
         var cardInfo = DataHelper.getApprovedCard();
         paymentPage.fillForm(cardInfo);
-        paymentPage.successMessage("Успешно. Операция одобрена Банком.");
+        paymentPage.successMessage();
     }
 
     @Test
@@ -39,10 +47,6 @@ public class BuyingATripTest {
         var paymentPage = dashboardPage.buyWithCard();
         var cardInfo = DataHelper.getDeclinedCard();
         paymentPage.fillForm(cardInfo);
-        paymentPage.errorMessage("Ошибка! Банк отказал в проведении операции.");
+        paymentPage.errorMessage();
     }
-
-
-
-
 }

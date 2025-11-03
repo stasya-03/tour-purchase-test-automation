@@ -16,12 +16,14 @@ public class PaymentPage {
     private SelenideElement numberField = $("[placeholder='0000 0000 0000 0000']");
     private SelenideElement monthField = $("[placeholder='08']");
     private SelenideElement yearField = $("[placeholder='22']");
-    private SelenideElement ownerField = $$("input.input__control").find(exactText("Владелец"));
+    private SelenideElement ownerField = $$("input.input__control").get(3);
     private SelenideElement cvcField = $("[placeholder='999']");
     private SelenideElement continueButton = $$("button.button").find(exactText("Продолжить"));
 
-    private SelenideElement successMessage = $$("notification__content").findBy(text("Успешно"));
-    private SelenideElement errorMessage = $$("notification__content").findBy(text("Ошибка!"));
+    private SelenideElement successTitle = $(".notification__title");
+    private SelenideElement successMessage = $(".notification__content");
+    private SelenideElement errorTitle = $(".notification__title");
+    private SelenideElement errorMessage = $(".notification__content");
 
     public void fillForm(DataHelper.CardInfo info) {
         numberField.setValue(info.getCardNumber());
@@ -32,13 +34,14 @@ public class PaymentPage {
         continueButton.click();
     }
 
-    public void successMessage(String expectedText) {
-        successMessage.shouldHave(Condition.exactText(expectedText)).shouldBe(Condition.visible, Duration.ofSeconds(15));
+    public void successMessage() {
+        successTitle.shouldHave(exactText("Успешно"), Duration.ofSeconds(15)).shouldBe(visible);
+        successMessage.shouldHave(exactText("Операция одобрена Банком."), Duration.ofSeconds(15)).shouldBe(visible);
     }
 
-    public void errorMessage(String expectedText) {
-        errorMessage.shouldHave(Condition.exactText(expectedText)).shouldBe(Condition.visible, Duration.ofSeconds(15));
+    public void errorMessage() {
+        errorTitle.shouldHave(exactText("Ошибка!"), Duration.ofSeconds(15)).shouldBe(visible);
+        errorMessage.shouldHave(exactText("Ошибка! Банк отказал в проведении операции."), Duration.ofSeconds(15)).shouldBe(visible);
     }
-
 
 }
