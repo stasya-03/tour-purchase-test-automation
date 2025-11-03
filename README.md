@@ -30,7 +30,6 @@
 4. Для формирования отчета Allure выполнить:
    
    ./gradlew allureReport
-
    ./gradlew allureServe
    
 
