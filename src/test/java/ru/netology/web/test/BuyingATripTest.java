@@ -13,7 +13,6 @@ import ru.netology.web.page.DashboardPage;
 
 public class BuyingATripTest {
 
-
     DashboardPage dashboardPage;
 
     @BeforeAll
