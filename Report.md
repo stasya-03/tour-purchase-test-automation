@@ -14,7 +14,5 @@
 - Проверить корректность отображения сообщений об ошибках
 - Убедиться, что тестовые данные и база данных синхронизированы
 
-## Отчеты по тестированию:
-- Gradle Report: [file:///D:/HW_Automation/termPaper_automation/build/reports/tests/test/index.html](file:///D:/HW_Automation/termPaper_automation/build/reports/tests/test/index.html)
-- Allure Report: [http://192.168.0.100:23071/index.html](http://192.168.0.100:23071/index.html)
+
 
