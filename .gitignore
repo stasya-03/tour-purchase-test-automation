@@ -14,7 +14,7 @@ build/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr
@@ -44,4 +44,11 @@ out/
 !**/src/main/**
 !**/src/test/**
 
+### Дополнительные папки, которые нужно скрыть ###
 data/
+logs/
+allure-results/
+allure-report/
+reports/
+test-output/
+tmp/
