@@ -48,4 +48,44 @@ public class BuyingATripTest {
         paymentPage.fillForm(cardInfo);
         paymentPage.errorMessage();
     }
+
+    @Test
+    public void shouldShowErrorMessageIfAllFieldsEmpty() {
+        var paymentPage = dashboardPage.buyWithCard();
+        var cardInfo = new DataHelper.CardInfo("", "", "", "", "");
+        paymentPage.fillForm(cardInfo);
+        paymentPage.errorMessage();
+    }
+
+    @Test
+    public void shouldShowErrorMessageIfCardNumberInvalid() {
+        var paymentPage = dashboardPage.buyWithCard();
+        var cardInfo = new DataHelper.CardInfo("1234 5678 9012", "12", "25", "IVAN PETROV", "123");
+        paymentPage.fillForm(cardInfo);
+        paymentPage.errorMessage();
+    }
+
+    @Test
+    public void shouldShowErrorMessageIfExpiredYear() {
+        var paymentPage = dashboardPage.buyWithCard();
+        var cardInfo = new DataHelper.CardInfo("1111 2222 3333 4444", "12", "20", "IVAN PETROV", "123");
+        paymentPage.fillForm(cardInfo);
+        paymentPage.errorMessage();
+    }
+
+    @Test
+    public void shouldShowErrorIfOwnerEmpty() {
+        var paymentPage = dashboardPage.buyWithCard();
+        var cardInfo = new DataHelper.CardInfo("1111 2222 3333 4444", "12", "26", "", "123");
+        paymentPage.fillForm(cardInfo);
+        paymentPage.errorMessage();
+    }
+
+    @Test
+    public void shouldShowErrorMessageIfCVCInvalid() {
+        var paymentPage = dashboardPage.buyWithCard();
+        var cardInfo = new DataHelper.CardInfo("1111 2222 3333 4444", "12", "26", "IVAN PETROV", "1");
+        paymentPage.fillForm(cardInfo);
+        paymentPage.errorMessage();
+    }
 }
