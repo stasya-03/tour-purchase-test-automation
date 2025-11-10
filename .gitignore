@@ -52,3 +52,10 @@ allure-report/
 reports/
 test-output/
 tmp/
+
+# Скриншоты и отчёты
+/screenshots/
+/allure-results/
+/allure-report/
+*.png
+*.jpg
