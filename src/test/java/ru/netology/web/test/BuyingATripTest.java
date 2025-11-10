@@ -11,6 +11,8 @@ import ru.netology.web.data.DataHelper;
 import ru.netology.web.data.SQLHelper;
 import ru.netology.web.page.DashboardPage;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class BuyingATripTest {
 
     DashboardPage dashboardPage;
@@ -88,4 +90,15 @@ public class BuyingATripTest {
         paymentPage.fillForm(cardInfo);
         paymentPage.errorMessage();
     }
+
+    @Test
+    public void shouldSaveApprovedPaymentToDB() {
+        var paymentPage = dashboardPage.buyWithCard();
+        var cardInfo = DataHelper.getApprovedCard();
+        paymentPage.fillForm(cardInfo);
+        paymentPage.successMessage();
+        var status = SQLHelper.getPaymentStatus();
+        assertEquals("APPROVED", status);
+    }
+
 }
