@@ -101,4 +101,44 @@ public class BuyingATripTest {
         assertEquals("APPROVED", status);
     }
 
+    @Test
+    public void shouldNotAcceptLettersInCardNumber() {
+        var paymentPage = dashboardPage.buyWithCard();
+        var invalidCard = DataHelper.getInvalidCardNumberLetters();
+        paymentPage.fillForm(invalidCard);
+        paymentPage.errorMessage();
+    }
+
+    @Test
+    public void shouldNotAcceptLettersInMonth() {
+        var paymentPage = dashboardPage.buyWithCard();
+        var invalidMonth = DataHelper.getInvalidMonthLetters();
+        paymentPage.fillForm(invalidMonth);
+        paymentPage.errorMessage();
+    }
+
+    @Test
+    public void shouldNotAcceptLettersInYear() {
+        var paymentPage = dashboardPage.buyWithCard();
+        var invalidYear = DataHelper.getInvalidYearLetters();
+        paymentPage.fillForm(invalidYear);
+        paymentPage.errorMessage();
+    }
+
+    @Test
+    public void shouldNotAcceptDigitsInOwnerField() {
+        var paymentPage = dashboardPage.buyWithCard();
+        var invalidOwner = DataHelper.getInvalidOwnerDigits();
+        paymentPage.fillForm(invalidOwner);
+        paymentPage.errorMessage();
+    }
+
+    @Test
+    public void shouldNotAcceptLettersInCvc() {
+        var paymentPage = dashboardPage.buyWithCard();
+        var invalidCvc = DataHelper.getInvalidCvcLetters();
+        paymentPage.fillForm(invalidCvc);
+        paymentPage.errorMessage();
+    }
+
 }
