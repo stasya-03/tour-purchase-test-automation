@@ -62,7 +62,7 @@ public class BuyingATripTest {
     @Test
     public void shouldShowErrorMessageIfCardNumberInvalid() {
         var paymentPage = dashboardPage.buyWithCard();
-        var cardInfo = new DataHelper.CardInfo("1234 5678 9012", "12", "25", "IVAN PETROV", "123");
+        var cardInfo = new DataHelper.CardInfo("1234 5678 9012", "12", "25", "IVAN IVANOV", "123");
         paymentPage.fillForm(cardInfo);
         paymentPage.errorMessage();
     }
@@ -70,7 +70,7 @@ public class BuyingATripTest {
     @Test
     public void shouldShowErrorMessageIfExpiredYear() {
         var paymentPage = dashboardPage.buyWithCard();
-        var cardInfo = new DataHelper.CardInfo("1111 2222 3333 4444", "12", "20", "IVAN PETROV", "123");
+        var cardInfo = new DataHelper.CardInfo("1111 2222 3333 4444", "12", "20", "IVAN IVANOV", "123");
         paymentPage.fillForm(cardInfo);
         paymentPage.errorMessage();
     }
@@ -86,7 +86,7 @@ public class BuyingATripTest {
     @Test
     public void shouldShowErrorMessageIfCVCInvalid() {
         var paymentPage = dashboardPage.buyWithCard();
-        var cardInfo = new DataHelper.CardInfo("1111 2222 3333 4444", "12", "26", "IVAN PETROV", "1");
+        var cardInfo = new DataHelper.CardInfo("1111 2222 3333 4444", "12", "26", "IVAN IVANOV", "1");
         paymentPage.fillForm(cardInfo);
         paymentPage.errorMessage();
     }
