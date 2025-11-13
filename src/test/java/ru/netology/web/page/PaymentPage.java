@@ -24,11 +24,11 @@ public class PaymentPage {
     private final SelenideElement notificationTitle = notification.$(".notification__title");
     private final SelenideElement notificationContent = notification.$(".notification__content");
 
-    private final SelenideElement numberInvalid = $$("span.input__sub").get(0);
-    private final SelenideElement monthInvalid = $$("span.input__sub").get(1);
-    private final SelenideElement yearInvalid = $$("span.input__sub").get(2);
-    private final SelenideElement ownerInvalid = $$("span.input__sub").get(3);
-    private final SelenideElement cvcInvalid = $$("span.input__sub").get(4);
+    private final SelenideElement numberInvalid = $$("span.input__inner").get(0);
+    private final SelenideElement monthInvalid = $$("span.input__inner").get(1);
+    private final SelenideElement yearInvalid = $$("span.input__inner").get(2);
+    private final SelenideElement ownerInvalid = $$("span.input__inner").get(3);
+    private final SelenideElement cvcInvalid = $$("span.input__inner").get(4);
 
     public void fillForm(DataHelper.CardInfo info) {
         numberField.setValue(info.getCardNumber());
@@ -58,7 +58,7 @@ public class PaymentPage {
     }
 
     public void monthInvalid() {
-        monthInvalid.shouldHave(text("Неверный формат"));
+        monthInvalid.shouldHave(exactText("Неверный формат"));
     }
 
     public void exceedingMonth() {
