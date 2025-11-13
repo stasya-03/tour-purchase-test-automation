@@ -61,8 +61,16 @@ public class PaymentPage {
         monthInvalid.shouldHave(text("Неверный формат"));
     }
 
+    public void exceedingMonth() {
+        monthInvalid.shouldHave(text("Неверно указан срок действия карты"));
+    }
+
     public void monthIsEmpty() {
         monthInvalid.shouldHave(text("Поле обязательно для заполнения"));
+    }
+
+    public void expiredYear() {
+        yearInvalid.shouldHave(text("Истёк срок действия карты"));
     }
 
     public void yearInvalid() {
