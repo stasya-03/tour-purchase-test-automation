@@ -20,10 +20,9 @@ public class PaymentPage {
     private SelenideElement cvcField = $("[placeholder='999']");
     private SelenideElement continueButton = $$("button.button").find(exactText("Продолжить"));
 
-    private SelenideElement successTitle = $(".notification__title");
-    private SelenideElement successMessage = $(".notification__content");
-    private SelenideElement errorTitle = $(".notification__title");
-    private SelenideElement errorMessage = $(".notification__content");
+    private final SelenideElement notification = $(".notification");
+    private final SelenideElement notificationTitle = notification.$(".notification__title");
+    private final SelenideElement notificationContent = notification.$(".notification__content");
 
     public void fillForm(DataHelper.CardInfo info) {
         numberField.setValue(info.getCardNumber());
@@ -35,13 +34,13 @@ public class PaymentPage {
     }
 
     public void successMessage() {
-        successTitle.shouldHave(exactText("Успешно"), Duration.ofSeconds(15)).shouldBe(visible);
-        successMessage.shouldHave(exactText("Операция одобрена Банком."), Duration.ofSeconds(15)).shouldBe(visible);
+        notificationTitle.shouldHave(text("Успешно"), Duration.ofSeconds(15)).shouldBe(visible);
+        notificationContent.shouldHave(text("Операция одобрена Банком"), Duration.ofSeconds(15)).shouldBe(visible);
     }
 
     public void errorMessage() {
-        errorTitle.shouldHave(exactText("Ошибка!"), Duration.ofSeconds(15)).shouldBe(visible);
-        errorMessage.shouldHave(exactText("Ошибка! Банк отказал в проведении операции."), Duration.ofSeconds(15)).shouldBe(visible);
+        notificationTitle.shouldHave(text("Ошибка"), Duration.ofSeconds(15)).shouldBe(visible);
+        notificationContent.shouldHave(text("Банк отказал в проведении операции"), Duration.ofSeconds(15)).shouldBe(visible);
     }
 
 }
