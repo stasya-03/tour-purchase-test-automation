@@ -52,43 +52,55 @@ public class BuyingATripTest {
     }
 
     @Test
-    public void shouldShowErrorMessageIfAllFieldsEmpty() {
+    public void shouldShowRedFieldIfAllFieldsEmpty() {
         var paymentPage = dashboardPage.buyWithCard();
         var cardInfo = new DataHelper.CardInfo("", "", "", "", "");
         paymentPage.fillForm(cardInfo);
-        paymentPage.errorMessage();
+        paymentPage.cardNumberIsEmpty();
+        paymentPage.monthIsEmpty();
+        paymentPage.yearIsEmpty();
+        paymentPage.ownerIsEmpty();
+        paymentPage.cvcIsEmpty();
     }
 
     @Test
-    public void shouldShowErrorMessageIfCardNumberInvalid() {
+    public void shouldShowRedFieldIfCardNumberInvalid() {
         var paymentPage = dashboardPage.buyWithCard();
         var cardInfo = new DataHelper.CardInfo("1234 5678 9012", "12", "25", "IVAN IVANOV", "123");
         paymentPage.fillForm(cardInfo);
-        paymentPage.errorMessage();
+        paymentPage.cardNumberInvalid();
     }
 
     @Test
-    public void shouldShowErrorMessageIfExpiredYear() {
+    public void shouldShowRedFieldIfInvalidMonth() {
+        var paymentPage = dashboardPage.buyWithCard();
+        var cardInfo = new DataHelper.CardInfo("1111 2222 3333 4444", "13", "26", "IVAN IVANOV", "123");
+        paymentPage.fillForm(cardInfo);
+        paymentPage.exceedingMonth();
+    }
+
+    @Test
+    public void shouldShowRedFieldIfExpiredYear() {
         var paymentPage = dashboardPage.buyWithCard();
         var cardInfo = new DataHelper.CardInfo("1111 2222 3333 4444", "12", "20", "IVAN IVANOV", "123");
         paymentPage.fillForm(cardInfo);
-        paymentPage.errorMessage();
+        paymentPage.expiredYear();
     }
 
     @Test
-    public void shouldShowErrorIfOwnerEmpty() {
+    public void shouldShowRedFieldIfOwnerEmpty() {
         var paymentPage = dashboardPage.buyWithCard();
         var cardInfo = new DataHelper.CardInfo("1111 2222 3333 4444", "12", "26", "", "123");
         paymentPage.fillForm(cardInfo);
-        paymentPage.errorMessage();
+        paymentPage.ownerIsEmpty();
     }
 
     @Test
-    public void shouldShowErrorMessageIfCVCInvalid() {
+    public void shouldShowRedFieldIfCVCInvalid() {
         var paymentPage = dashboardPage.buyWithCard();
         var cardInfo = new DataHelper.CardInfo("1111 2222 3333 4444", "12", "26", "IVAN IVANOV", "1");
         paymentPage.fillForm(cardInfo);
-        paymentPage.errorMessage();
+        paymentPage.cvcInvalid();
     }
 
     @Test
@@ -106,7 +118,7 @@ public class BuyingATripTest {
         var paymentPage = dashboardPage.buyWithCard();
         var invalidCard = DataHelper.getInvalidCardNumberLetters();
         paymentPage.fillForm(invalidCard);
-        paymentPage.errorMessage();
+        paymentPage.cardNumberInvalid();
     }
 
     @Test
@@ -114,7 +126,7 @@ public class BuyingATripTest {
         var paymentPage = dashboardPage.buyWithCard();
         var invalidMonth = DataHelper.getInvalidMonthLetters();
         paymentPage.fillForm(invalidMonth);
-        paymentPage.errorMessage();
+        paymentPage.monthInvalid();
     }
 
     @Test
@@ -122,7 +134,7 @@ public class BuyingATripTest {
         var paymentPage = dashboardPage.buyWithCard();
         var invalidYear = DataHelper.getInvalidYearLetters();
         paymentPage.fillForm(invalidYear);
-        paymentPage.errorMessage();
+        paymentPage.yearInvalid();
     }
 
     @Test
@@ -130,7 +142,7 @@ public class BuyingATripTest {
         var paymentPage = dashboardPage.buyWithCard();
         var invalidOwner = DataHelper.getInvalidOwnerDigits();
         paymentPage.fillForm(invalidOwner);
-        paymentPage.errorMessage();
+        paymentPage.ownerInvalid();
     }
 
     @Test
@@ -138,7 +150,7 @@ public class BuyingATripTest {
         var paymentPage = dashboardPage.buyWithCard();
         var invalidCvc = DataHelper.getInvalidCvcLetters();
         paymentPage.fillForm(invalidCvc);
-        paymentPage.errorMessage();
+        paymentPage.cvcInvalid();
     }
 
 }
