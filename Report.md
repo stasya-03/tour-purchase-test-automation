@@ -15,6 +15,6 @@
 - Убедиться, что тестовые данные и база данных синхронизированы
 
 ## Отчет Allure
-<img width="1724" height="813" alt="Снимок экрана 2025-11-11 155111" src="https://github.com/user-attachments/assets/cae73eaf-949b-4a6e-aa18-b6ce9ef60c67" />
-<img width="1721" height="925" alt="Снимок экрана 2025-11-11 155053" src="https://github.com/user-attachments/assets/5ba318dd-4f67-4d77-8b66-c776f16f1272" />
+<img width="1720" height="857" alt="image" src="https://github.com/user-attachments/assets/b015b950-87f7-41c8-9f09-f4e006ceae2f" />
+<img width="1723" height="917" alt="image" src="https://github.com/user-attachments/assets/2794f98d-0a66-4c07-90a2-eea0a845e913" />
 
