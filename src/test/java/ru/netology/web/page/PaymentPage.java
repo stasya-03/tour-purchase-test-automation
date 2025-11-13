@@ -24,6 +24,12 @@ public class PaymentPage {
     private final SelenideElement notificationTitle = notification.$(".notification__title");
     private final SelenideElement notificationContent = notification.$(".notification__content");
 
+    private final SelenideElement numberInvalid = $$("span.input__sub").get(0);
+    private final SelenideElement monthInvalid = $$("span.input__sub").get(1);
+    private final SelenideElement yearInvalid = $$("span.input__sub").get(2);
+    private final SelenideElement ownerInvalid = $$("span.input__sub").get(3);
+    private final SelenideElement cvcInvalid = $$("span.input__sub").get(4);
+
     public void fillForm(DataHelper.CardInfo info) {
         numberField.setValue(info.getCardNumber());
         monthField.setValue(info.getMonth());
@@ -42,5 +48,46 @@ public class PaymentPage {
         notificationTitle.shouldHave(text("Ошибка"), Duration.ofSeconds(15)).shouldBe(visible);
         notificationContent.shouldHave(text("Банк отказал в проведении операции"), Duration.ofSeconds(15)).shouldBe(visible);
     }
+
+    public void cardNumberInvalid() {
+        numberInvalid.shouldHave(text("Неверный формат"));
+    }
+
+    public void cardNumberIsEmpty() {
+        numberInvalid.shouldHave(text("Поле обязательно для заполнения"));
+    }
+
+    public void monthInvalid() {
+        monthInvalid.shouldHave(text("Неверный формат"));
+    }
+
+    public void monthIsEmpty() {
+        monthInvalid.shouldHave(text("Поле обязательно для заполнения"));
+    }
+
+    public void yearInvalid() {
+        yearInvalid.shouldHave(text("Неверный формат"));
+    }
+
+    public void yearIsEmpty() {
+        yearInvalid.shouldHave(text("Поле обязательно для заполнения"));
+    }
+
+    public void ownerInvalid() {
+        ownerInvalid.shouldHave(text("Неверный формат"));
+    }
+
+    public void ownerIsEmpty() {
+        ownerInvalid.shouldHave(text("Поле обязательно для заполнения"));
+    }
+
+    public void cvcInvalid() {
+        cvcInvalid.shouldHave(text("Неверный формат"));
+    }
+
+    public void cvcIsEmpty() {
+        cvcInvalid.shouldHave(text("Поле обязательно для заполнения"));
+    }
+
 
 }
