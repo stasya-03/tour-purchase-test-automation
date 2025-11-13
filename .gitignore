@@ -45,7 +45,7 @@ out/
 !**/src/test/**
 
 ### Дополнительные папки, которые нужно скрыть ###
-data/
+/data/
 logs/
 allure-results/
 allure-report/
