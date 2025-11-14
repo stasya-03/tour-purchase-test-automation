@@ -126,7 +126,7 @@ public class BuyingATripTest {
         var paymentPage = dashboardPage.buyWithCard();
         var invalidMonth = DataHelper.getInvalidMonthLetters();
         paymentPage.fillForm(invalidMonth);
-        paymentPage.monthInvalid();
+        paymentPage.monthRequired();
     }
 
     @Test
