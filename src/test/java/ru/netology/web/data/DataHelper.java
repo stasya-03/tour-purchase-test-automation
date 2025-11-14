@@ -21,19 +21,19 @@ public class DataHelper {
     }
 
     public static CardInfo getInvalidMonthLetters() {
-        return new CardInfo("4444 4444 4444 4444", "aa", "25", "IVAN IVANOV", "123");
+        return new CardInfo("1111 2222 3333 4444", "aa", "25", "IVAN IVANOV", "123");
     }
 
     public static CardInfo getInvalidYearLetters() {
-        return new CardInfo("4444 4444 4444 4444", "12", "yy", "IVAN IVANOV", "123");
+        return new CardInfo("1111 2222 3333 4444", "12", "yy", "IVAN IVANOV", "123");
     }
 
     public static CardInfo getInvalidOwnerDigits() {
-        return new CardInfo("4444 4444 4444 4444", "12", "25", "12345", "123");
+        return new CardInfo("1111 2222 3333 4444", "12", "25", "12345", "123");
     }
 
     public static CardInfo getInvalidCvcLetters() {
-        return new CardInfo("4444 4444 4444 4444", "12", "25", "IVAN IVANOV", "abc");
+        return new CardInfo("1111 2222 3333 4444", "12", "25", "IVAN IVANOV", "abc");
     }
 
 
