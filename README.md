@@ -78,10 +78,31 @@
 - Docker  
 - Google Chrome  
 
----
-
 ### 2. Клонировать репозиторий
 
 ```bash
 git clone https://github.com/stasya-03/tour-purchase-test-automation.git
 cd tour-purchase-test-automation
+```
+
+### 3. Запуск тестового окружения
+
+```bash
+docker-compose up
+```
+После запуска приложение будет доступно по адресу: http://localhost:8080
+
+### 4. Запуск автотестов
+
+```bash
+./gradlew clean test
+```
+
+### 5. Просмотр отчета Allure
+
+```bash
+./gradlew allureReport
+./gradlew allureServe
+```
+
+
