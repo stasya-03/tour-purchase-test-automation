@@ -107,5 +107,15 @@ docker-compose up
 ./gradlew allureReport
 ./gradlew allureServe
 ```
+---
 
+## 📸 Отчет Allure
+
+Пример отчета после выполнения автотестов:
+
+<p align="center">
+  <img src="./screenshots/allure-report.png" width="900">
+</p>
+
+---
 
